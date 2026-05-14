@@ -3,7 +3,7 @@ name: release-versioning
 description: Manage versioned releases and release artifacts across software, apps, firmware, skills, packages, and downloadable builds. Use when bumping semver, preparing GitHub releases, syncing README badges/version mentions, publishing binaries or archives, attaching release assets, updating package/app metadata, or making sure version constants and docs agree before a release.
 metadata:
   author: Leeor Nahum
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Release Versioning
@@ -46,6 +46,20 @@ Use `vX.Y.Z` for Git tags unless the repo already has a different tag convention
 7. Attach or generate release assets according to the repo's existing release process.
 8. After publishing, verify the latest-release link, badge, or update channel points to the intended version.
 
+## README Version Badges
+
+For public GitHub projects with releases, prefer a README badge that tracks the latest semantic GitHub release instead of hardcoding a version in prose.
+
+Use a latest-release badge when it helps users quickly identify the current release:
+
+```markdown
+[![GitHub Release](https://img.shields.io/github/v/release/OWNER/REPO?sort=semver)](https://github.com/OWNER/REPO/releases/latest)
+```
+
+After publishing, verify the badge resolves to the new semver tag and the `/releases/latest` link lands on the intended release.
+
+Do not add noisy badges to tiny private repos, internal-only repos, or docs where a badge would distract more than it helps.
+
 ## Release Notes
 
 Pattern-match existing releases first. If there is no established style, write concise user-facing notes that explain what changed and any install/update implications.
@@ -59,6 +73,7 @@ Do not paste secret values, local machine paths, or internal scratch context.
 - Rebuild if version metadata changed after packaging.
 - Prefer generated build output over hand-edited archives.
 - For downloadable GUI/app releases, make the README install/run instructions match the latest artifact.
+- For projects users install from GitHub releases, make the README point to the latest release or use a latest-release badge instead of stale direct asset URLs.
 - For skills, bump `metadata.version` when behavior changes and keep README behavior aligned without adding noisy version footers.
 
 ## Firmware And Device Releases
