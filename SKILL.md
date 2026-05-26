@@ -3,7 +3,7 @@ name: release-versioning
 description: Manage versioned releases and release artifacts across software, apps, firmware, skills, packages, and downloadable builds. Use when bumping semver, preparing GitHub releases, syncing README badges/version mentions, publishing binaries or archives, attaching release assets, updating package/app metadata, or making sure version constants and docs agree before a release.
 metadata:
   author: Leeor Nahum
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 # Release Versioning
@@ -34,6 +34,10 @@ Use [Semantic Versioning](https://semver.org/) unless the repo already documents
 - major: breaking behavior, renamed package/app, changed public protocol, incompatible firmware/device contract
 
 Use `vX.Y.Z` for Git tags unless the repo already has a different tag convention.
+
+Increment immediately when changes are made. Do not wait for a commit, push, or deploy signal. If the version is not updated before the user commits on their own, the changes ship with a stale version.
+
+Before incrementing, inspect the last committed version via git and compare it to the current working state. If multiple uncommitted changes have accumulated across passes since the last checkpoint, calibrate the increment to cover all of them honestly rather than incrementing per-pass in isolation. The version must reflect the true scope of all changes since the last committed or tagged state. If git history is unavailable, increment based on the current change as normal.
 
 ## Workflow
 
