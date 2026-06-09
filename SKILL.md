@@ -1,8 +1,8 @@
 ---
-name: release-versioning
-description: Manage versioned releases and release artifacts across software, apps, firmware, skills, packages, and downloadable builds. Use when bumping semver, preparing GitHub releases, syncing README badges/version mentions, publishing binaries or archives, attaching release assets, updating package/app metadata, or making sure version constants and docs agree before a release.
+name: "release-versioning"
+description: "Manage versioned releases and release artifacts across software, apps, firmware, skills, packages, and downloadable builds. Use when bumping semver, preparing GitHub releases, syncing README badges/version mentions, publishing binaries or archives, attaching release assets, updating package/app metadata, or making sure version constants and docs agree before a release."
 metadata:
-  author: Leeor Nahum
+  author: "Leeor Nahum"
   version: "1.2.0"
 ---
 
