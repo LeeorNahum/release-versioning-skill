@@ -3,7 +3,7 @@ name: "release-versioning"
 description: "Manage versioned releases and release artifacts across software, apps, firmware, skills, packages, and downloadable builds. Use when bumping semver, preparing GitHub releases, syncing README badges/version mentions, publishing binaries or archives, attaching release assets, updating package/app metadata, or making sure version constants and docs agree before a release."
 metadata:
   author: "Leeor Nahum"
-  version: "1.2.0"
+  version: "1.2.1"
 ---
 
 # Release Versioning
@@ -35,9 +35,9 @@ Use [Semantic Versioning](https://semver.org/) unless the repo already documents
 
 Use `vX.Y.Z` for Git tags unless the repo already has a different tag convention.
 
-Increment immediately when changes are made. Do not wait for a commit, push, or deploy signal. If the version is not updated before the user commits on their own, the changes ship with a stale version.
+Increment immediately when changes are made for a meaningful checkpoint. Do not wait for a commit, push, or user signal once the work is being finalized as the next accepted state. During initial creation, active drafting, fast review loops, or uncommitted edits the same agent owns, keep the draft's version stable until the work is ready to be treated as the next version.
 
-Before incrementing, inspect the last committed version via git and compare it to the current working state. If multiple uncommitted changes have accumulated across passes since the last checkpoint, calibrate the increment to cover all of them honestly rather than incrementing per-pass in isolation. The version must reflect the true scope of all changes since the last committed or tagged state. If git history is unavailable, increment based on the current change as normal.
+Before incrementing, inspect the last committed or tagged version via git and compare it to the current working state. If a published, installed, handed-off, or user-approved version is newer than git, use that accepted version as the checkpoint. If multiple uncommitted changes have accumulated across passes since the last checkpoint, calibrate one increment to cover all of them honestly rather than incrementing per-pass in isolation. The version must reflect the true scope of all changes since the last accepted version. If git history is unavailable, use the nearest meaningful checkpoint: the last release, install, handoff, or user-approved draft.
 
 ## Workflow
 
@@ -78,7 +78,7 @@ Do not paste secret values, local machine paths, or internal scratch context.
 - Prefer generated build output over hand-edited archives.
 - For downloadable GUI/app releases, make the README install/run instructions match the latest artifact.
 - For projects users install from GitHub releases, make the README point to the latest release or use a latest-release badge instead of stale direct asset URLs.
-- For skills, bump `metadata.version` when behavior changes and keep README behavior aligned without adding noisy version footers.
+- For skills, bump `metadata.version` at the next meaningful checkpoint after behavior changes and keep README behavior aligned without adding noisy version footers.
 
 ## Firmware And Device Releases
 
