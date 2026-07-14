@@ -3,7 +3,7 @@ name: "release-versioning"
 description: "Manage versioned releases and release artifacts across software, apps, firmware, skills, packages, and downloadable builds. Use when bumping semver, preparing GitHub releases, syncing README badges/version mentions, publishing binaries or archives, attaching release assets, updating package/app metadata, or making sure version constants and docs agree before a release."
 metadata:
   author: "Leeor Nahum"
-  version: "1.2.1"
+  version: "1.2.2"
 ---
 
 # Release Versioning
@@ -16,12 +16,12 @@ Do not let the repo say one version while the binary, firmware, README, tag, or 
 
 Before changing versions, identify every version surface:
 
-- package metadata: `package.json`, `pyproject.toml`, app manifests, extension manifests
-- code constants: `VERSION`, `APP_VERSION`, firmware build flags, generated about dialogs
-- docs: `README.md`, install docs, badges, changelog
-- artifacts: `.zip`, `.exe`, `.bin`, `.uf2`, `.hex`, app bundles, extension packages
+- Package metadata: `package.json`, `pyproject.toml`, app manifests, extension manifests
+- Code constants: `VERSION`, `APP_VERSION`, firmware build flags, generated about dialogs
+- Docs: `README.md`, install docs, badges, changelog
+- Artifacts: `.zip`, `.exe`, `.bin`, `.uf2`, `.hex`, app bundles, extension packages
 - Git: tags, GitHub releases, release notes
-- deployment records: provider dashboard values, release tables, update manifests
+- Deployment records: provider dashboard values, release tables, update manifests
 
 Report which surfaces exist before editing.
 
@@ -29,9 +29,9 @@ Report which surfaces exist before editing.
 
 Use [Semantic Versioning](https://semver.org/) unless the repo already documents a different scheme.
 
-- patch: bug fixes, wording/docs fixes, internal-only packaging fixes
-- minor: new capability, supported platform, workflow, or compatibility addition
-- major: breaking behavior, renamed package/app, changed public protocol, incompatible firmware/device contract
+- Patch: bug fixes, wording/docs fixes, internal-only packaging fixes
+- Minor: new capability, supported platform, workflow, or compatibility addition
+- Major: breaking behavior, renamed package/app, changed public protocol, incompatible firmware/device contract
 
 Use `vX.Y.Z` for Git tags unless the repo already has a different tag convention.
 
@@ -86,21 +86,21 @@ Firmware is a versioned release artifact, not a special exception.
 
 When firmware or device updates are involved:
 
-- identify hardware compatibility before releasing
-- keep firmware version constants/build flags synced with the tag
-- attach the exact binary the device/update service should fetch
-- update any release table, manifest, or update metadata that points devices to the artifact
-- do not mix debug and release artifacts
-- do not publish a device-facing update until the rollback or recovery path is understood
+- Identify hardware compatibility before releasing
+- Keep firmware version constants/build flags synced with the tag
+- Attach the exact binary the device/update service should fetch
+- Update any release table, manifest, or update metadata that points devices to the artifact
+- Do not mix debug and release artifacts
+- Do not publish a device-facing update until the rollback or recovery path is understood
 
-Firmware configuration and secrets belong in a firmware config skill; this skill owns the release artifact and version alignment.
+Firmware configuration and secrets belong in a firmware config skill. This skill owns the release artifact and version alignment.
 
 ## Stop And Ask
 
 Ask before:
 
-- choosing a major/minor/patch bump when user impact is unclear
-- publishing a GitHub release
-- replacing an existing release asset
-- marking an update as latest for devices or users
-- changing public package names, executable names, extension IDs, firmware hardware compatibility, or update URLs
+- Choosing a major/minor/patch bump when user impact is unclear
+- Publishing a GitHub release
+- Replacing an existing release asset
+- Marking an update as latest for devices or users
+- Changing public package names, executable names, extension IDs, firmware hardware compatibility, or update URLs
