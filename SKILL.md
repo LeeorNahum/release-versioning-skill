@@ -3,7 +3,7 @@ name: "release-versioning"
 description: "Manage versioned releases and release artifacts across software, apps, firmware, skills, packages, and downloadable builds. Use when bumping semver, preparing GitHub releases, syncing README badges/version mentions, publishing binaries or archives, attaching release assets, updating package/app metadata, or making sure version constants and docs agree before a release."
 metadata:
   author: "Leeor Nahum"
-  version: "1.2.2"
+  version: "1.3.0"
 ---
 
 # Release Versioning
@@ -24,6 +24,11 @@ Before changing versions, identify every version surface:
 - Deployment records: provider dashboard values, release tables, update manifests
 
 Report which surfaces exist before editing.
+
+Where a directory declares its version more than once, a package manifest beside another
+declaration, every declaration is one version and they move in the same change. A manifest
+whose version has drifted from the thing it ships is the surface that goes stale first,
+because nothing reads it back.
 
 ## Semver
 
