@@ -3,7 +3,7 @@ name: "release-versioning"
 description: "Use when deciding or making a version bump, including a skill's metadata.version, preparing or publishing a GitHub release, publishing binaries or archives, attaching release assets, syncing README badges and version mentions, updating package or app metadata, or making sure version constants and docs agree before a release. Manages versioned releases and release artifacts across software, apps, firmware, skills, packages, and downloadable builds."
 metadata:
   author: "Leeor Nahum"
-  version: "1.4.0"
+  version: "1.5.0"
 ---
 
 # Release Versioning
@@ -35,6 +35,14 @@ Use [Semantic Versioning](https://semver.org/) unless the repo already documents
 - Minor: new capability, supported platform, workflow, or compatibility addition
 - Major: breaking behavior, renamed package/app, changed public protocol, incompatible firmware/device contract
 
+For skills, `metadata.version` is the version, and a `package.json` beside it carries the same number. Bump it when the authored skill changes:
+
+- Patch: wording fixes, examples, and small clarifications
+- Minor: new guidance, wider supported scenarios, or better structure
+- Major: changed behavior or scope, a renamed skill, or a major rewrite
+
+A refresh of generated or vendored content alone is not a bump. Keep README behavior aligned without adding noisy version footers.
+
 Use `vX.Y.Z` for Git tags unless the repo already has a different tag convention.
 
 Bump once per checkpoint. The checkpoint is the moment the work is ready to be treated as the next accepted version, whether or not it has been committed, pushed, or confirmed yet. Before that, during initial creation, active drafting, fast review loops, or uncommitted edits the same agent owns, keep the version stable. Never leave accepted work at the old version.
@@ -50,19 +58,15 @@ Before incrementing, inspect the last committed or tagged version via git and co
 5. Verify the artifact name, embedded/displayed version, README, and tag all agree.
 6. Create or prepare the GitHub release using the repo's existing release-note style when one exists.
 7. Attach or generate release assets according to the repo's existing release process.
-8. After publishing, verify the latest-release link, badge, or update channel points to the intended version.
+8. After publishing, verify any badge resolves to the new semver tag, the `/releases/latest` link lands on the intended release, and any update channel points to the intended version.
 
 ## README Version Badges
 
-For public GitHub projects with releases, prefer a README badge that tracks the latest semantic GitHub release instead of hardcoding a version in prose.
-
-Use a latest-release badge when it helps users quickly identify the current release:
+For projects users install from GitHub releases, point the README at the latest release instead of a stale direct asset URL. For public ones, prefer a badge that tracks the latest semantic GitHub release over a version hardcoded in prose:
 
 ```markdown
 [![GitHub Release](https://img.shields.io/github/v/release/OWNER/REPO?sort=semver)](https://github.com/OWNER/REPO/releases/latest)
 ```
-
-After publishing, verify the badge resolves to the new semver tag and the `/releases/latest` link lands on the intended release.
 
 Do not add noisy badges to tiny private repos, internal-only repos, or docs where a badge would distract more than it helps.
 
@@ -79,8 +83,6 @@ Do not paste secret values, local machine paths, or internal scratch context.
 - Rebuild if version metadata changed after packaging.
 - Prefer generated build output over hand-edited archives.
 - For downloadable GUI/app releases, make the README install/run instructions match the latest artifact.
-- For projects users install from GitHub releases, make the README point to the latest release or use a latest-release badge instead of stale direct asset URLs.
-- For skills, `metadata.version` is the version, and a `package.json` beside it carries the same number. Bump it when the authored skill changes: patch for wording fixes, examples, and small clarifications, minor for new guidance, wider supported scenarios, or better structure, major for changed behavior or scope, a renamed skill, or a major rewrite. A refresh of generated or vendored content alone is not a bump. Keep README behavior aligned without adding noisy version footers.
 
 ## Firmware And Device Releases
 
@@ -95,7 +97,7 @@ When firmware or device updates are involved:
 - Do not mix debug and release artifacts
 - Do not publish a device-facing update until the rollback or recovery path is understood
 
-Firmware configuration and secrets belong in the firmware-repository-opinions skill. This skill owns the release artifact and version alignment.
+Firmware configuration and secrets are outside this skill. It owns the release artifact and version alignment.
 
 ## Stop And Ask
 
