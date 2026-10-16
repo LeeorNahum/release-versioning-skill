@@ -3,7 +3,7 @@ name: "release-versioning"
 description: "Use when deciding or making a version bump, including a skill's metadata.version, preparing or publishing a GitHub release, publishing binaries or archives, attaching release assets, syncing README badges and version mentions, updating package or app metadata, or making sure version constants and docs agree before a release. Manages versioned releases and release artifacts across software, apps, firmware, skills, packages, and downloadable builds."
 metadata:
   author: "Leeor Nahum"
-  version: "1.5.0"
+  version: "1.6.0"
 ---
 
 # Release Versioning
@@ -83,6 +83,7 @@ Do not paste secret values, local machine paths, or internal scratch context.
 - Rebuild if version metadata changed after packaging.
 - Prefer generated build output over hand-edited archives.
 - For downloadable GUI/app releases, make the README install/run instructions match the latest artifact.
+- Treat a build that CI stores on a workflow run, such as a GitHub Actions artifact, as a means to publishing, not a copy of the release. Store only what the release it serves needs, keep it 3 days by default, which covers a release approved a day or a weekend later, and keep none of it once its files are attached to the release.
 
 ## Firmware And Device Releases
 
